@@ -23,7 +23,9 @@ class loginView(FormView):
         user = authenticate(username=data['username'], password=data['password'])
         if user is not None:
             login(request=self.request, user=user)
-        return redirect('home')
+            return redirect('home')
+        else:
+            return redirect('login')
 
 
 def logoutView(request):
