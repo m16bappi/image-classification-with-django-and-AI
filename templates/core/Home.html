@@ -1,0 +1,11 @@
+{% extends 'Base/Base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+    <div class="d-flex gap-5 flex-wrap justify-content-center">
+        {% for image in objects %}
+            <img src="{{ image.image.url }}" class="img-thumbnail" alt="nothing">
+        {% endfor %}
+    </div>
+{% endblock %}

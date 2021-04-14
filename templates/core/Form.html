@@ -1,0 +1,13 @@
+{% extends 'Base/Base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <div class="d-flex justify-content-center">
+    <form method="post" enctype="multipart/form-data" class="w-50 gap-3 d-flex flex-column">
+        <p class="display-4">Upload your image</p>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-outline-primary" type="submit">submit</button>
+    </form>
+    </div>
+{% endblock %}
