@@ -12,7 +12,7 @@
                         {% if request.user in image.voted.all %}
                             <h6>Voted</h6>
                         {% else %}
-                            <a href="{% url 'classify' image.id %}" class="btn btn-primary">Go for classified</a>
+                            <a href="{% url 'classify' image.id %}" class="btn btn-primary">Vote</a>
                         {% endif %}
                     </div>
                 {% endif %}
