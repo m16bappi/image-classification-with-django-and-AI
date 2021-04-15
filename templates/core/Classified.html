@@ -1,26 +1,16 @@
 {% extends 'Base/Base.html' %}
 
+
 {% block body %}
-    <div class="d-flex justify-content-center">
-        <img src="{{ object.image.url }}" class="img-thumbnail" alt="">
-    </div>
-    <p class="display-5 mb-3 mt-3 text-center">classify the image</p>
-    <hr>
-    <form method="post" action="{% url 'classifying' object.id %}" class="d-flex justify-content-center flex-column">
-        <div class="d-flex justify-content-center gap-3">
-            {% csrf_token %}
-            {% for value in classified_context %}
-                <div class="form-check">
-                    <label>
-                        <input type="radio" name="radio" id="{{ value.id }}"
-                               value="{{ value.id }}" checked>
-                    </label>
-                    <label class="form-check-label" for="exampleRadios1">
-                        {{ value }}
-                    </label>
+    <div class="d-flex gap-5 flex-wrap justify-content-center">
+        {% for image in objects %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{ image.image.image.url }}" class="card-img-top img-thumbnail" alt="...">
+                <div class="card-body d-flex justify-content-center align-items-center flex-column">
+                    <h6>Character: {{ image.classified_char.characters }}</h6>
+                    <h6>Percentage: {{ image.percentage }}%</h6>
                 </div>
-            {% endfor %}
-        </div>
-        <button type="submit" class="btn btn-primary w-25 mt-3" style="align-self: center">submit</button>
-    </form>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
